@@ -1,4 +1,4 @@
 public interface IAngerBehave
 {
-    protected abstract void AngerBehave();
+    public abstract void AngerBehave();
 }

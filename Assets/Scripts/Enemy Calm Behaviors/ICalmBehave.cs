@@ -1,4 +1,4 @@
 public interface ICalmBehave
 {
-    protected abstract void CalmBehave();
+    public abstract void CalmBehave();
 }

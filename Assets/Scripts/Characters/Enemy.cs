@@ -2,69 +2,44 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private ICalmBehave _calmBehavior;
-    [SerializeField] private IAngerBehave _angerBehavior;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _rotationSpeed;
 
-    [SerializeField] private Transform[] _patrolTargets;
+    [SerializeField] private Transform[] _targers;
 
-    //void ICalmBehave.CalmBehave(CalmBehavior behavior)
-    //{
-    //    switch (behavior)
-    //    {
-    //        case CalmBehavior.Stay:
-    //            break;
+    [SerializeField] private float _minTargetDistance = 0.1f;
+    [SerializeField] private Transform _currentTarget;
 
-    //        case CalmBehavior.Patrol:
-    //            if (_patrolTargets != null)
-    //                Patrol();
-    //            break;
+    private void Update()
+    {
+        Vector3 direction = GetDirectionTo();
 
-    //        case CalmBehavior.RandomWalk:
-    //            RandomWalk();
-    //            break;
+        if (direction.magnitude <= _minTargetDistance)
+            return;
 
-    //        default:
-    //            Debug.LogError($"{gameObject.name}: There is no such realisation for CalmBehavior!");
-    //            break;
-    //    }
-    //}
+        Vector3 normalizedDirection = direction.normalized;
 
-    //private void Patrol()
-    //{
+        ProcessMove(normalizedDirection);
 
-    //}
+        ProcessRotation(normalizedDirection);
+    }
 
-    //private void RandomWalk()
-    //{
+    private Vector3 GetDirectionTo() => _currentTarget.position - transform.position;
 
-    //}
+    private void ProcessMove(Vector3 direction)
+    {
+        transform.Translate(direction * _speed * Time.deltaTime, Space.World);
+    }
 
-    //void IAngerBehave.AngerBehave(AngerBehavior behavior)
-    //{
-    //    switch (behavior)
-    //    {
-    //        case AngerBehavior.RunAway:
-    //            break;
+    private void ProcessRotation(Vector3 direction)
+    {
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        float step = _rotationSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, step);
+    }
 
-    //        case AngerBehavior.TryHit:
-    //            break;
+    public void SelectTarget()
+    {
 
-    //        case AngerBehavior.Explode:
-    //            break;
-
-    //        default:
-    //            Debug.LogError($"{gameObject.name}: There is no such realisation for AngerBehavior!");
-    //            break;
-    //    }
-    //}
-
-    //private void RunAwayFrom(Vector3 target)
-    //{
-
-    //}
-
-    //private void MoveToTarget(Vector3 target)
-    //{
-
-    //}
+    }
 }
