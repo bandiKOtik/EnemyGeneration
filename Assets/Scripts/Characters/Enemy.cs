@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
         switch (_calmBehavior)
         {
             case CalmBehavior.Stay:
-                _currentTarget = transform.position;
+                _calmBehave = new Stay(transform);
                 break;
 
             case CalmBehavior.Patrol:

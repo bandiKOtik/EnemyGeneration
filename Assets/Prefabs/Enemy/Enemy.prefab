@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 15
-  _rotationSpeed: 50
+  _rotationSpeed: 500
   _calmBehavior: 0
   _angerBehavior: 0
   _targers: []
