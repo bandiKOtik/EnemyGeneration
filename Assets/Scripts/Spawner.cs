@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
     {
         if (timer <= 0)
         {
-            SpawnNewItem(_enemyVariantPrefabs[Random.Range(0, _enemyVariantPrefabs.Length)]);
+            Spawn(_enemyVariantPrefabs[Random.Range(0, _enemyVariantPrefabs.Length)]);
             timer = _timeBeforeNewItemSpawn;
             return;
         }
@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
         timer -= Time.deltaTime;
     }
 
-    private void SpawnNewItem(Enemy item)
+    private void Spawn(Enemy item)
     {
         Queue<SpawnPoint> spawnsQueue = ShuffledArray(spawnPoints);
 

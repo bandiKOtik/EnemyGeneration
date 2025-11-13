@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3dd5a6641e1b424da87bff6ea17e136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  _rotationSpeed: 0
+  _speed: 15
+  _rotationSpeed: 50
+  _calmBehavior: 0
+  _angerBehavior: 0
   _targers: []
   _minTargetDistance: 0.1
-  _currentTarget: {fileID: 0}
+  _currentTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &680944951574757605
 MonoBehaviour:
   m_ObjectHideFlags: 0

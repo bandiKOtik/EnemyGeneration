@@ -8,6 +8,6 @@ public enum CalmBehavior
 public enum AngerBehavior
 {
     RunAway = 0,
-    TryHit = 1,
+    MoveToTarget = 1,
     Explode = 2
 }
