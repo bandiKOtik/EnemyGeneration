@@ -1,11 +1,11 @@
-public enum CalmBehavior
+public enum IdleBehavior
 {
     Stay = 0,
     Patrol = 1,
     RandomWalk = 2
 }
 
-public enum AngerBehavior
+public enum ReactionBehavior
 {
     RunAway = 0,
     MoveToTarget = 1,

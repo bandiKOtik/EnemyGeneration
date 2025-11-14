@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5854900488512584062}
   - component: {fileID: 4803146156180891260}
   - component: {fileID: 680944951574757605}
+  - component: {fileID: 1155331475904123019}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -48,11 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 15
   _rotationSpeed: 500
-  _calmBehavior: 0
-  _angerBehavior: 0
-  _targers: []
   _minTargetDistance: 0.1
-  _currentTarget: {x: 0, y: 0, z: 0}
 --- !u!114 &680944951574757605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +68,27 @@ MonoBehaviour:
   body: {fileID: 7753717376328482760}
   calmMaterial: {fileID: 2100000, guid: a800cc9f1696d8245b838009d337b843, type: 2}
   angryMaterial: {fileID: 2100000, guid: 2a5ff3a7fcd241a4088f3b0bdca79633, type: 2}
+--- !u!135 &1155331475904123019
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628396397935012542}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7753717376328482760
 GameObject:
   m_ObjectHideFlags: 0
