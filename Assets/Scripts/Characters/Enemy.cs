@@ -5,6 +5,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationSpeed;
 
+    [SerializeField] private ParticleSystem _deathParticles;
+    public ParticleSystem DeathEffectParticles { get => _deathParticles; }
+    public Vector3 PlayerDetectPosition { get; set; }
+
     [SerializeField] private float _minTargetDistance = 0.1f;
     private Vector3 _currentTarget;
 
@@ -19,6 +23,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        gameObject.SetActive(true);
         _currentTarget = IdleBehave.GetNewTargetPosition();
     }
 
@@ -62,10 +67,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             _isReactionActive = true;
+            PlayerDetectPosition = other.transform.position;
+            Debug.Log(PlayerDetectPosition);
+        }
     }
 
     private void OnTriggerExit(Collider other)

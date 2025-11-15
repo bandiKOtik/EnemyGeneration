@@ -52,36 +52,53 @@ public class Patrol : IBehave
 
 public class RunAway : IBehave
 {
+    private Vector3 _runAwayFrom;
+    private Vector3 _objectPosition;
+    public RunAway(Vector3 runFrom, Vector3 objectPosition)
+    {
+        _runAwayFrom = runFrom;
+        _objectPosition = objectPosition;
+    }
     Vector3 IBehave.GetNewTargetPosition()
     {
-        return Vector3.zero;
+        return _objectPosition + (_objectPosition - _runAwayFrom);
     }
 }
 
 public class MoveToTarget : IBehave
 {
-    Vector3 _target;
-    public void SetTarrget(Vector3 target) => _target = target;
+    Enemy _enemy;
+    public MoveToTarget(Enemy enemy)
+    {
+        _enemy = enemy;
+    }
     Vector3 IBehave.GetNewTargetPosition()
     {
-        return _target.normalized;
+        return _enemy.PlayerDetectPosition;
     }
 }
 
 public class Explode : IBehave
 {
+    private Enemy _exploderObject;
     private ParticleSystem _particles;
-    //public Explode(ParticleSystem particle) => _particles = particle;
+    public Explode(Enemy enemyPrefab)
+    {
+        _exploderObject = enemyPrefab;
+    }
 
     Vector3 IBehave.GetNewTargetPosition()
     {
-        DestroyObject();
+        KillObject();
 
         return Vector3.zero;
     }
 
-    private void DestroyObject()
+    private void KillObject()
     {
+        if (_exploderObject.DeathEffectParticles != null)
+            Object.Instantiate(_particles.gameObject, _exploderObject.transform.position, Quaternion.identity);
 
+        Object.Destroy(_exploderObject.gameObject);
     }
 }

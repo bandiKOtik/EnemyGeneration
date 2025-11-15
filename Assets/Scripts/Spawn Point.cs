@@ -4,6 +4,7 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] private Enemy _enemyPrefab;
+    private Enemy spawnedEnemy = null;
 
     [SerializeField] private IdleBehavior _idleBehaviorType;
     [SerializeField] private ReactionBehavior _reactionBehaviorType;
@@ -21,9 +22,9 @@ public class SpawnPoint : MonoBehaviour
 
     public void InstantiateSpawnableItem()
     {
-        SetBehavior();
+        spawnedEnemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
 
-        Enemy spawnedEnemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
+        SetBehavior();
 
         if (_patrolTargets.Length == 0 && _idleBehaviorType == IdleBehavior.Patrol)
         {
@@ -63,15 +64,15 @@ public class SpawnPoint : MonoBehaviour
         switch (_reactionBehaviorType)
         {
             case ReactionBehavior.RunAway:
-                _reactionBehave = new RunAway();
+                _reactionBehave = new RunAway(spawnedEnemy.PlayerDetectPosition, spawnedEnemy.transform.position);
                 break;
 
             case ReactionBehavior.MoveToTarget:
-                _reactionBehave = new MoveToTarget();
+                _reactionBehave = new MoveToTarget(spawnedEnemy);
                 break;
 
             case ReactionBehavior.Explode:
-                _reactionBehave = new Explode();
+                _reactionBehave = new Explode(spawnedEnemy);
                 break;
 
             default:
