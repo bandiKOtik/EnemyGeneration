@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
@@ -42,7 +43,12 @@ public class SpawnPoint : MonoBehaviour
                 break;
 
             case IdleBehavior.Patrol:
-                _idleBehave = new Patrol();
+                List<Vector3> targetVectors = new List<Vector3>();
+
+                foreach (Transform target in _patrolTargets)
+                    targetVectors.Add(target.position);
+
+                _idleBehave = new Patrol(targetVectors);
                 break;
 
             case IdleBehavior.RandomWalk:

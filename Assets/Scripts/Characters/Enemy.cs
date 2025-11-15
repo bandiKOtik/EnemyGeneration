@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     private bool _isReactionActive = false;
     public IBehave IdleBehave { get; private set; }
     public IBehave ReactionBehave { get; private set; }
-
     public void Initialize(IBehave idle, IBehave reaction)
     {
         IdleBehave = idle;

@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public interface IBehave
 {
@@ -31,21 +31,25 @@ public class RandomWalk : IBehave
 
 public class Patrol : IBehave
 {
-    private Vector3[] _patrolTargets;
-    //public Patrol(Vector3[] targets) => _patrolTargets = targets;
+    int _targetIndex = 0;
+    private List<Vector3> _patrolTargets;
+    public Patrol(List<Vector3> targets) => _patrolTargets = targets;
 
     Vector3 IBehave.GetNewTargetPosition()
     {
-        Vector3 newMainTarget = Vector3.zero;
+        Vector3 newTarget = Vector3.zero;
 
-        for (int i = 0; i < _patrolTargets.Length; i++)
-        {
-            newMainTarget = _patrolTargets[i];
-        }
+        if (_targetIndex >= _patrolTargets.Count)
+            _targetIndex = 0;
 
-        return newMainTarget;
+        newTarget = _patrolTargets[_targetIndex];
+
+        _targetIndex++;
+
+        return newTarget;
     }
 }
+
 public class RunAway : IBehave
 {
     Vector3 IBehave.GetNewTargetPosition()
@@ -66,8 +70,18 @@ public class MoveToTarget : IBehave
 
 public class Explode : IBehave
 {
+    private ParticleSystem _particles;
+    //public Explode(ParticleSystem particle) => _particles = particle;
+
     Vector3 IBehave.GetNewTargetPosition()
     {
+        DestroyObject();
+
         return Vector3.zero;
+    }
+
+    private void DestroyObject()
+    {
+
     }
 }

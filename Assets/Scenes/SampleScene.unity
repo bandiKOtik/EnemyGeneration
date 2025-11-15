@@ -285,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _idleBehaviorType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _reactionBehavior
@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _reactionBehaviorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _patrolTargets.Array.size
@@ -902,11 +902,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _idleBehaviorType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _reactionBehaviorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _patrolTargets.Array.size
@@ -1310,11 +1310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _idleBehaviorType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _reactionBehaviorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4432458906570254717, guid: c74fd482ce24c884193240548f71c783, type: 3}
       propertyPath: _patrolTargets.Array.size
